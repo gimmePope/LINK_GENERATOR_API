@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Invoice Details</title>
+    <style>
+        body { font-family: Arial, sans-serif; }
+        .invoice-container { width: 80%; margin: 20px auto; padding: 20px; border: 1px solid #ddd; }
+        .invoice-header { text-align: center; }
+        .invoice-details { margin-top: 20px; }
+        .btn { display: inline-block; background-color: #4CAF50; color: white; padding: 10px 20px; text-align: center; text-decoration: none; font-size: 16px; cursor: pointer; border-radius: 5px; }
+    </style>
+</head>
+<body>
+<div class="invoice-container">
+    <div class="invoice-header">
+        <h2>Invoice Details</h2>
+    </div>
+    <div class="invoice-details">
+        <p><strong>Date Issued:</strong> <span th:text="${invoice.issuedAt}">1st Jan 2024</span></p>
+        <p><strong>Due Date:</strong> <span th:text="${invoice.dueDate}">15th Jan 2024</span></p>
+        <p><strong>Amount:</strong> <span th:text="${invoice.amount}">$100.00</span></p>
+        <p><strong>Status:</strong> <span th:text="${invoice.status}">UNPAID</span></p>
+        <p><strong>Customer:</strong> <span th:text="${invoice.customer.name}">John Doe</span></p>
+        <a th:href="@{/pay/{id}(id=${invoice.id})}" class="btn">Proceed to Payment</a>
+    </div>
+</div>
+</body>
+</html>
